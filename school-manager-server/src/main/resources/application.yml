@@ -1,0 +1,13 @@
+school:
+  name: school1
+  address: zaliznuj_street
+
+spring:
+  datasource:
+    url: jdbc:h2:mem:mydb
+    username: sa
+    password: password
+    driverClassName: org.h2.Driver
+  jpa:
+    ddl-auto: create-drop
+    spring.jpa.database-platform: org.hibernate.dialect.H2Dialect
