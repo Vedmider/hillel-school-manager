@@ -4,8 +4,6 @@ import com.hillel.application.persistent.entity.School;
 import com.hillel.application.presentation.model.Teacher;
 import com.hillel.application.service.SchoolService;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.Email;
-import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
@@ -29,25 +27,24 @@ public class SchoolController {
     @PutMapping(value = "/school/{schoolId}")
     public School createSchool(@PathVariable Long schoolId,
                                @RequestHeader(value = HttpHeaders.ACCEPT_LANGUAGE, required = false) String language,
-                               @RequestHeader Map<String, String> headers) {
+                               @RequestHeader Map<String, String> headers,
+                               @RequestBody School school) {
 
-        School school = schoolService.create();
-        return school;
+        School school1 = schoolService.create();
+        return school1;
     }
 
     @RequestMapping(
             method = RequestMethod.GET,
-            value = "/items/{id}",
+            value = "/schools/{id}",
             produces = {"application/json"}
     )
-    public ResponseEntity<String> getItemById(@PathVariable("id") @Size(max = 10) String id,
-                                              @PathVariable("uuid") String uuid,
+    public ResponseEntity<School> getItemById(@PathVariable("id") @Size(max = 10) String id,
                                               @RequestParam(value = "verbosity",
                                                       required = false,
-                                                      defaultValue = "all") List<String> verbosity) {
+                                                      defaultValue = "all") String verbosity) {
 
-
-        return ResponseEntity.ok("Fetched Item by id: " + id);
+        return ResponseEntity.ok(new School());
     }
 
     @RequestMapping(

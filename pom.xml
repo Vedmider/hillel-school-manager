@@ -17,7 +17,7 @@
 
     <name>spring boot study project</name>
     <properties>
-
+        <openapi-generator-maven-plugin.version>6.6.0</openapi-generator-maven-plugin.version>
     </properties>
 
     <modules>
