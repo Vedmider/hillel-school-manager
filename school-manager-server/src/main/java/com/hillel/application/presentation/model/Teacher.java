@@ -14,6 +14,13 @@ public class Teacher {
     @Email
     private String email;
 
+    public Teacher(String secondName, String firstName, String gender, String email) {
+        this.secondName = secondName;
+        this.firstName = firstName;
+        this.gender = gender;
+        this.email = email;
+    }
+
     public String getEmail() {
         return email;
     }
