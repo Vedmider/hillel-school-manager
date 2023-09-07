@@ -5,4 +5,6 @@ import com.hillel.application.persistent.entity.School;
 public interface SchoolService {
 
     School create();
+
+    School create(Long id);
 }

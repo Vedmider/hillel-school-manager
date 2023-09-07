@@ -21,6 +21,7 @@ servers:
           - southeastasia
       apiVersion:
         default: api/v1
+
 tags:
   - name: SchoolManager
     description: Api to manage school functions

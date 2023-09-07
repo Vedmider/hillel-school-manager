@@ -13,6 +13,15 @@ public class SchoolServiceImpl implements SchoolService{
 
     @Override
     public School create() {
-        return null;
+        return new School();
+    }
+
+    @Override
+    public School create(Long id) {
+        return new School(id, null, null);
+    }
+
+    public School findInRepository(Long id) {
+        return schoolRepository.findById(id).get();
     }
 }
