@@ -1,32 +1,33 @@
 package com.hillel.application.service;
 
-import com.hillel.application.infrastructure.exceptions.SchoolManagerDefaultException;
-import com.hillel.application.persistent.entity.School;
-import com.hillel.application.persistent.repository.SchoolRepository;
+import com.hillel.application.presentation.model.Car;
 import jakarta.persistence.EntityManager;
-import jakarta.persistence.Persistence;
-import jakarta.transaction.Transactional;
-import org.springframework.beans.factory.annotation.Autowired;
+import jakarta.persistence.PersistenceContext;
+import jakarta.validation.Valid;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
+import org.springframework.validation.annotation.Validated;
 
 @Service
+@Validated
 public class SchoolServiceImpl implements SchoolService{
 
-    @Autowired
-    private SchoolRepository schoolRepository;
 
-    @Override
-    @Transactional
-    public School create() {
-        schoolRepository.findById(10L);
+    @PersistenceContext
+    private EntityManager em;
 
-
-        throw new SchoolManagerDefaultException();
-    }
 
     @Async
     public void doSomething() {
 
+    }
+
+    public void validateCar(@Valid Car car) {
+        System.out.println("Validated");
+    }
+
+    @Override
+    public Car create() {
+        return null;
     }
 }

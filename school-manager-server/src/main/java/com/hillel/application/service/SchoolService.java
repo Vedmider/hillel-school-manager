@@ -1,8 +1,8 @@
 package com.hillel.application.service;
 
-import com.hillel.application.persistent.entity.School;
+import com.hillel.application.presentation.model.Car;
 
 public interface SchoolService {
 
-    School create();
+    Car create();
 }

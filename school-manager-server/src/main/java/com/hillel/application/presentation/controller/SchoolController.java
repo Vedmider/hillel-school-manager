@@ -2,15 +2,11 @@ package com.hillel.application.presentation.controller;
 
 import com.hillel.application.infrastructure.exceptions.SchoolManagerArchitecturalException;
 import com.hillel.application.infrastructure.exceptions.SchoolManagerThinkingException;
-import com.hillel.application.persistent.entity.School;
-import com.hillel.application.presentation.model.ProblemDetails;
 import com.hillel.application.presentation.model.Teacher;
 import com.hillel.application.service.SchoolService;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.Size;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
@@ -27,13 +23,6 @@ public class SchoolController {
     private SchoolService schoolService;
 
 
-    @PutMapping(value = "/school/{schoolId}")
-    public School createSchool(@PathVariable Long schoolId,
-                               @RequestBody School school) {
-
-        School school1 = new School();
-        return school1;
-    }
 
     @PutMapping(value = "/teacher/{id}")
     public Teacher createTeacher(@PathVariable String id,
@@ -43,18 +32,7 @@ public class SchoolController {
         return  new Teacher(id, null, null, null);
     }
 
-    @RequestMapping(
-            method = RequestMethod.GET,
-            value = "/schools/{id}",
-            produces = {"application/json"}
-    )
-    public ResponseEntity<School> getItemById(@PathVariable("id") @Size(max = 10) String id,
-                                              @RequestParam(value = "verbosity",
-                                                      required = false,
-                                                      defaultValue = "all") String verbosity) {
 
-        return ResponseEntity.ok(new School());
-    }
 
     @RequestMapping(
             method = RequestMethod.POST,
@@ -62,7 +40,7 @@ public class SchoolController {
             produces = {"application/json"},
             consumes = {"application/json"}
     )
-    public ResponseEntity<String> executeTransaction(@Valid @RequestBody(required = false) Teacher teacher) {
+    public ResponseEntity< @Size(min = 4, max = 10) String> executeTransaction(@Valid @RequestBody(required = false) Teacher teacher) {
 
 
         return ResponseEntity.ok().build();

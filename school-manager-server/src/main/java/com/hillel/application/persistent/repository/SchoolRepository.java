@@ -17,13 +17,6 @@ public interface SchoolRepository extends JpaRepository<School, Long> {
     @Override
     Optional<School> findById(Long aLong);
 
-    @Query(
-            value = "SELECT * FROM SCHOOLS s WHERE s.id = ?1",
-            nativeQuery = true)
-    Collection<School> findAllActiveUsersNative(Long id);
-
-    @Query("update School s set s.address = :address where u.id = :id")
-    void updateAddress(@Param("address") String address, @Param("id") Long id);
 
 //    List<School> findByEmailAddressAndLastname(String emailAddress, String lastname);
 //

@@ -1,8 +1,8 @@
 package com.hillel.application.persistent.entity;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
 import jakarta.persistence.ManyToMany;
-import org.springframework.data.annotation.Id;
 
 import java.util.List;
 

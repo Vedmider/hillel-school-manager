@@ -22,10 +22,6 @@ public class Director {
     private ContactInfo contactInfo;
 
 
-    @Column(name = "last_name", length = 20)
-    @Size(max = 20)
-    private String lastName;
-
     @OneToOne(mappedBy = "director")
     private School school;
 
