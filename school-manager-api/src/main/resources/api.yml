@@ -180,6 +180,8 @@ components:
           type: integer
         name:
           type: string
+          maxLength: 255
+          pattern: '^(?!CON$|PRN$|AUX$|NUL$|COM[1-9]$|LPT[1-9]$)(?![.])[^\x00-\x1F<>:"/\\|?*]{1,255}(?<![. ])$'
         address:
           type: string
         site:

@@ -2,9 +2,19 @@ package com.hillel.application.persistent.entity;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Pattern;
+import jakarta.validation.constraints.Size;
+
+import java.util.List;
+import java.util.Set;
 
 @Entity(name = "school")
 @Table(name = "it_school")
+@NamedEntityGraph(
+        name = "post-entity-graph",
+        attributeNodes = {
+                @NamedAttributeNode("director")
+        }
+)
 public class School {
 
     @Id
@@ -17,5 +27,32 @@ public class School {
 
     @Column(name = "school_address")
     private String address;
+
+    @OneToOne(fetch = FetchType.LAZY, orphanRemoval = true)
+    @JoinColumn(name = "secured_director_id")
+    private Director director;
+
+    @ManyToMany
+    @JoinTable(
+            name = "city_school_table",
+            joinColumns = @JoinColumn(name = "city_id"),
+            inverseJoinColumns = @JoinColumn(name = "school_id"))
+    private Set<City> cities;
+
+    @ElementCollection
+    @CollectionTable(name = "item_tag", joinColumns = @JoinColumn(name = "item_id", referencedColumnName = "id"))
+    @Column(name = "tag")
+    private List<@Size(max = 48) @Pattern(regexp = "^((?![\\|\\/]).)*$") String> tags;
+
+    @Version
+    private Long version;
+
+    public School() {
+    }
+
+    public void removeDirector(Director director) {
+        this.director = null;
+
+    }
 
 }
