@@ -1,21 +1,15 @@
 package com.hillel.application.persistent.repository;
 
-import com.hillel.application.persistent.entity.School;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.hillel.application.persistent.entity.SchoolEntity;
 import org.springframework.data.jpa.repository.EntityGraph;
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.jpa.repository.Modifying;
-import org.springframework.data.jpa.repository.Query;
-import org.springframework.data.repository.query.Param;
-import org.springframework.stereotype.Repository;
 
-import java.util.Collection;
 import java.util.Optional;
 
-public interface SchoolRepository extends JpaRepository<School, Long> {
+public interface SchoolRepository extends JpaRepository<SchoolEntity, Long> {
 
     @Override
-    Optional<School> findById(Long aLong);
+    Optional<SchoolEntity> findById(Long aLong);
 
 
 //    List<School> findByEmailAddressAndLastname(String emailAddress, String lastname);
@@ -34,5 +28,5 @@ public interface SchoolRepository extends JpaRepository<School, Long> {
 //    List<School> findByLastnameOrderByFirstnameDesc(String lastname);
 
     @EntityGraph(attributePaths = { "school.director" }, type = EntityGraph.EntityGraphType.LOAD)
-    public School getSchoolById(Long id);
+    public SchoolEntity getSchoolById(Long id);
 }

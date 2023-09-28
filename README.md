@@ -1,1 +1,1 @@
-# hillel-school-manager
+# hillel-schoolEntity-manager
