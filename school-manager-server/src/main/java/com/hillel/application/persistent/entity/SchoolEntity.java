@@ -1,15 +1,14 @@
 package com.hillel.application.persistent.entity;
 
-import com.hillel.application.service.validation.annotation.ConsistentDateParameters;
-import com.hillel.application.service.validation.group.AdvanceInfo;
 import com.hillel.application.service.validation.group.BasicInfo;
 import jakarta.persistence.*;
-import jakarta.validation.GroupSequence;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
+import lombok.Getter;
+import lombok.Setter;
 import org.springframework.validation.annotation.Validated;
 
 import java.util.List;
@@ -24,7 +23,9 @@ import java.util.Set;
         }
 )
 @Validated
-public class School {
+@Getter
+@Setter
+public class SchoolEntity {
 
     @Id
     @GeneratedValue
@@ -58,7 +59,7 @@ public class School {
     @Version
     private Long version;
 
-    public School() {
+    public SchoolEntity() {
     }
 
     public void removeDirector(Director director) {
@@ -66,7 +67,7 @@ public class School {
 
     }
 
-    public @NotNull Director getDirector(@Valid School school) {
+    public @NotNull Director getDirector(@Valid SchoolEntity schoolEntity) {
         return this.director;
     }
 

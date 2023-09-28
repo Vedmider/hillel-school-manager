@@ -1,7 +1,6 @@
 package com.hillel.application.persistent.entity;
 
 import jakarta.persistence.*;
-import jakarta.validation.constraints.Size;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -23,7 +22,7 @@ public class Director {
 
 
     @OneToOne(mappedBy = "director")
-    private School school;
+    private SchoolEntity schoolEntity;
 
 
 }
