@@ -1,5 +1,6 @@
 package com.hillel.application.infrastructure.filter;
 
+import com.hillel.application.persistent.entity.Role;
 import com.hillel.application.persistent.repository.UserRepository;
 import com.hillel.application.service.UserService;
 import jakarta.servlet.FilterChain;
@@ -18,6 +19,7 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.filter.OncePerRequestFilter;
 
 import java.io.IOException;
+import java.util.List;
 import java.util.Optional;
 
 @Component
@@ -41,7 +43,7 @@ public class AuthTokenFilter extends OncePerRequestFilter {
         if (SecurityContextHolder.getContext().getAuthentication() == null
                 && userDetails != null && userDetails.isPresent()) {
             UserDetails user = userDetails.get();
-            UsernamePasswordAuthenticationToken authToken = new UsernamePasswordAuthenticationToken(user, null, user.getAuthorities());
+            UsernamePasswordAuthenticationToken authToken = new UsernamePasswordAuthenticationToken(user, null, List.of(new Role(Role.AUTHOR_ADMIN)));
             authToken.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
             SecurityContextHolder.getContext().setAuthentication(authToken);
         }

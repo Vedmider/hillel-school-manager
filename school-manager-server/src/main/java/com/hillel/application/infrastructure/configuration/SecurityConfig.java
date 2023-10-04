@@ -40,6 +40,7 @@ public class SecurityConfig  {
                                 .requestMatchers("/api/v1/**").permitAll()
                                 .requestMatchers("/login").permitAll()
                                 .requestMatchers("/addNewUser").permitAll()
+                                .requestMatchers("/actuator/**").permitAll()
                                 .requestMatchers("/authenticated").hasRole(Role.AUTHOR_ADMIN)
 
                 )
