@@ -1,0 +1,1 @@
+alter table if exists users add column token varchar(255), add column expiration_date timestamp;

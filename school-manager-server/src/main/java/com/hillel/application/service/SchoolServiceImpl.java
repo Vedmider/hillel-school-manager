@@ -1,18 +1,33 @@
 package com.hillel.application.service;
 
-import com.hillel.application.persistent.entity.School;
-import com.hillel.application.persistent.repository.SchoolRepository;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.hillel.application.presentation.model.Car;
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.PersistenceContext;
+import jakarta.validation.Valid;
+import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
+import org.springframework.validation.annotation.Validated;
 
 @Service
+@Validated
 public class SchoolServiceImpl implements SchoolService{
 
-    @Autowired
-    private SchoolRepository schoolRepository;
+
+    @PersistenceContext
+    private EntityManager em;
+
+
+    @Async
+    public void doSomething() {
+
+    }
+
+    public void validateCar(@Valid Car car) {
+        System.out.println("Validated");
+    }
 
     @Override
-    public School create() {
+    public Car create() {
         return null;
     }
 }

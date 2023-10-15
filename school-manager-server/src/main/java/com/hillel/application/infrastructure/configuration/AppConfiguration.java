@@ -3,6 +3,7 @@ package com.hillel.application.infrastructure.configuration;
 import com.hillel.application.infrastructure.properties.SchoolProperties;
 import com.hillel.application.persistent.listener.MailSenderListener;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.flyway.FlywayMigrationStrategy;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -20,4 +21,9 @@ public class AppConfiguration {
     public MailSenderListener mailSenderListener() {
         return new MailSenderListener();
     }
+
+//    @Bean
+//    public FlywayMigrationStrategy flywayMigrationStrategy(){
+//        return flyway -> {};
+//    }
 }

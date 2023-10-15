@@ -1,5 +1,6 @@
 package com.hillel.application.presentation.model;
 
+import jakarta.validation.Valid;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
@@ -13,6 +14,14 @@ public class Teacher {
     private String gender;
     @Email
     private String email;
+
+
+    public Teacher(String secondName, String firstName, String gender, String email) {
+        this.secondName = secondName;
+        this.firstName = firstName;
+        this.gender = gender;
+        this.email = email;
+    }
 
     public String getEmail() {
         return email;
